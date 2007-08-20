@@ -206,7 +206,7 @@ rm -fr %buildroot
 %{_datadir}/omf/*/*-C.omf
 %{_datadir}/mime/packages/*
 %{_datadir}/icons/hicolor/48x48/mimetypes/*
-%{_datadir}/man/man1/planner.*
+%{_mandir}/man1/planner.*
 
 %files -n %{lib_name}
 %defattr(-,root,root)
