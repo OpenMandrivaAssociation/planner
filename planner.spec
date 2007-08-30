@@ -8,14 +8,14 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.2
-Release:	%mkrel 6
+Release:	%mkrel 7
 License: 	GPL
 Group: 		Office
 Url:		http://planner.imendio.org/
 
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.bz2
 
-Patch: planner-0.14-mime.patch
+Patch0: planner-0.14-mime.patch
 Patch1:		planner-0.14.2-evolution.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
@@ -99,6 +99,8 @@ Evolution support for Planner, this plugin can be used with evolution.
 %patch -p1 -b .mime
 %patch1 -p1 -b .evolution
 
+#fix build
+intltoolize --force
 aclocal
 automake -f -i
 autoconf
@@ -121,14 +123,15 @@ rm -fr $RPM_BUILD_ROOT
 %makeinstall_std
 
 desktop-file-install --vendor="" \
-  --add-category="X-MandrivaLinux-Office-TasksManagement" \
+  --add-category="X-MandrivaLinux-CrossDesktop" \
+  --add-category="GTK" \
+  --add-category="GNOME" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 %find_lang %{name} --with-gnome
 for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do 
 echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name.lang
 done
-
 
 # remove unpackaged files
 rm -rf $RPM_BUILD_ROOT%{_libdir}/planner/views/*.la \
@@ -143,6 +146,7 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/planner/views/*.la \
 
 %post
 %update_scrollkeeper
+%update_menus
 %{update_desktop_database}
 %update_mime_database
 %post_install_gconf_schemas planner
@@ -156,6 +160,7 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/planner/views/*.la \
 %{clean_desktop_database}
 %clean_mime_database
 %clean_icon_cache hicolor
+%clean_menus
 
 
 %post -n %{lib_name} -p /sbin/ldconfig
@@ -183,7 +188,6 @@ rm -fr %buildroot
 %dir %{_datadir}/planner/glade
 %{_datadir}/planner/glade/*-*.glade
 %{_datadir}/planner/glade/eds.glade
-%{_datadir}/planner/glade/sql.glade
 %dir %{_datadir}/planner/ui
 %{_datadir}/planner/ui/eds-plugin.ui
 %{_datadir}/planner/ui/gantt-view.ui
@@ -194,13 +198,10 @@ rm -fr %buildroot
 %{_datadir}/planner/ui/main-window.ui
 %{_datadir}/planner/ui/msp-plugin.ui
 %{_datadir}/planner/ui/task-view.ui
-%{_datadir}/planner/ui/sql-plugin.ui
 %{_datadir}/planner/dtd
 %{_datadir}/planner/stylesheets
 %dir %{_datadir}/planner/images/
 %{_datadir}/planner/images/*
-%dir %{_datadir}/planner/sql/
-%{_datadir}/planner/sql/*
 %{_datadir}/pixmaps/*
 %dir %{_datadir}/omf/*
 %{_datadir}/omf/*/*-C.omf
