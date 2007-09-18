@@ -8,7 +8,7 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.2
-Release:	%mkrel 7
+Release:	%mkrel 8
 License: 	GPL
 Group: 		Office
 Url:		http://planner.imendio.org/
@@ -122,11 +122,17 @@ rm -fr $RPM_BUILD_ROOT
 
 %makeinstall_std
 
+sed -i -e 's/^\(Icon=.*\).png$/\1/g' $RPM_BUILD_ROOT%{_datadir}/applications/planner.desktop 
+
+#duplicate comments to GenericName for KDE (Mdv bug #33406)
+sed -i -e 's/^Comment\(.*\)$/GenericName\1\nComment\1/g' $RPM_BUILD_ROOT%{_datadir}/applications/planner.desktop 
+
 desktop-file-install --vendor="" \
   --add-category="X-MandrivaLinux-CrossDesktop" \
   --add-category="GTK" \
   --add-category="GNOME" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+
 
 %find_lang %{name} --with-gnome
 for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do 
