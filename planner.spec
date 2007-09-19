@@ -8,7 +8,7 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.2
-Release:	%mkrel 8
+Release:	%mkrel 9
 License: 	GPL
 Group: 		Office
 Url:		http://planner.imendio.org/
@@ -128,7 +128,6 @@ sed -i -e 's/^\(Icon=.*\).png$/\1/g' $RPM_BUILD_ROOT%{_datadir}/applications/pla
 sed -i -e 's/^Comment\(.*\)$/GenericName\1\nComment\1/g' $RPM_BUILD_ROOT%{_datadir}/applications/planner.desktop 
 
 desktop-file-install --vendor="" \
-  --add-category="X-MandrivaLinux-CrossDesktop" \
   --add-category="GTK" \
   --add-category="GNOME" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
