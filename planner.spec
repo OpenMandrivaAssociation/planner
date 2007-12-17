@@ -17,7 +17,6 @@ Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.b
 
 Patch0: planner-0.14-mime.patch
 Patch1:		planner-0.14.2-evolution.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
 BuildRequires:	libgnomeprintui-devel >= 2.2
