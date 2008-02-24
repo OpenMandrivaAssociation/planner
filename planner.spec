@@ -8,14 +8,14 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.2
-Release:	%mkrel 9
+Release:	%mkrel 10
 License: 	GPL
 Group: 		Office
 Url:		http://planner.imendio.org/
 
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.bz2
 
-Patch0: planner-0.14-mime.patch
+Patch0:		planner-0.14-mime.patch
 Patch1:		planner-0.14.2-evolution.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
@@ -27,7 +27,8 @@ BuildRequires:	perl-XML-Parser
 %if %{build_gda}
 BuildRequires:	gda1.2-devel
 %endif
-BuildRequires:	scrollkeeper >= 0.3 python-devel
+BuildRequires:	rarian
+Buildrequires:	python-devel
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	gtk-doc
 BuildRequires:	evolution-devel
@@ -36,7 +37,7 @@ BuildRequires:	evolution-data-server-devel
 BuildRequires:	mono-devel
 BuildRequires:  desktop-file-utils
 
-Requires:	scrollkeeper >= 0.3
+Requires:	rarian
 Obsoletes:	mrproject
 Provides:	mrproject = %{version}-%{release}
 
