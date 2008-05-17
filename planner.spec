@@ -21,7 +21,7 @@ BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
 BuildRequires:	libgnomeprintui-devel >= 2.2
 BuildRequires:	libgnomeui2-devel
-BuildRequires:	libxslt-devel
+BuildRequires:	libxslt-devel >= 1.1.23
 BuildRequires:	perl-XML-Parser
 %if %{build_gda}
 BuildRequires:	gda2.0-devel > 3.0.0
