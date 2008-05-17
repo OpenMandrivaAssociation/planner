@@ -24,7 +24,7 @@ BuildRequires:	libgnomeui2-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	perl-XML-Parser
 %if %{build_gda}
-BuildRequires:	gda1.2-devel
+BuildRequires:	gda2.0-devel
 %endif
 BuildRequires:	rarian
 Buildrequires:	python-devel
