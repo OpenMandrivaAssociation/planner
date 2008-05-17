@@ -11,7 +11,7 @@ Version:	0.14.3
 Release:	%mkrel 1
 License: 	GPL
 Group: 		Office
-Url:		http://planner.imendio.org/
+Url:		http://live.gnome.org/Planner
 
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.bz2
 
@@ -24,7 +24,7 @@ BuildRequires:	libgnomeui2-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	perl-XML-Parser
 %if %{build_gda}
-BuildRequires:	gda2.0-devel
+BuildRequires:	gda2.0-devel > 3.0.0
 %endif
 BuildRequires:	rarian
 Buildrequires:	python-devel
