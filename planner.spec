@@ -1,5 +1,7 @@
+%define lib_api 1
 %define lib_major 0
-%define lib_name %mklibname planner-1_ %{lib_major}
+%define lib_name %mklibname planner %{lib_api} %{lib_major}
+%define develname %mklibname -d planner
 %define build_gda 1
 %define title Planner
 %define longtitle Project management tool
@@ -8,7 +10,7 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.3
-Release:	%mkrel 1
+Release:	%mkrel 2
 License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
@@ -58,17 +60,20 @@ Python binding for Planner library
 %package -n	%{lib_name}
 Summary:	%{Summary}
 Group:		System/Libraries
+Obsoletes:	%mklibname planner- 1 0
 
 %description -n	%{lib_name}
 A support library for accessing Planner data.
  
-%package -n	%{lib_name}-devel
+%package -n	%{develname}
 Summary:	The files needed for Planner application development
 Group:		Development/C
 Requires:	%{lib_name} = %{version}-%{release}
-Provides:	lib%{name}-1-devel
+Provides:	lib%{name}-1-devel = %version
+Provides:	%name-devel = %version
+Obsoletes:	%mklibname -d planner- 1 0
 
-%description -n	%{lib_name}-devel
+%description -n	%{develname}
 This package contains the necessary include files
 for developing applications that access Planner data.
 
@@ -217,7 +222,7 @@ rm -fr %buildroot
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
-%files -n %{lib_name}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc %{_datadir}/gtk-doc/html/libplanner
 %{_libdir}/*.so
