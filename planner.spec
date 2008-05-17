@@ -9,7 +9,7 @@ Summary: 	%Summary
 Name: 		planner
 Version:	0.14.3
 Release:	%mkrel 1
-License: 	GPL
+License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
 
@@ -176,7 +176,7 @@ rm -fr %buildroot
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc ChangeLog README examples/sample-1.planner
+%doc NEWS README examples/sample-1.planner
 %{_sysconfdir}/gconf/schemas/planner.schemas
 %{_bindir}/%{name}
 %dir %{_libdir}/planner
