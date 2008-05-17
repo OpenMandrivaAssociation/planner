@@ -7,15 +7,14 @@
 
 Summary: 	%Summary
 Name: 		planner
-Version:	0.14.2
-Release:	%mkrel 10
+Version:	0.14.3
+Release:	%mkrel 1
 License: 	GPL
 Group: 		Office
 Url:		http://planner.imendio.org/
 
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.bz2
 
-Patch0:		planner-0.14-mime.patch
 Patch1:		planner-0.14.2-evolution.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
@@ -97,7 +96,6 @@ Evolution support for Planner, this plugin can be used with evolution.
 
 %prep
 %setup -q
-%patch -p1 -b .mime
 %patch1 -p1 -b .evolution
 
 #fix build
