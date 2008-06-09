@@ -172,9 +172,13 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/planner/views/*.la \
 %clean_menus
 
 
+%if %mdkversion < 200900
 %post -n %{lib_name} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{lib_name} -p /sbin/ldconfig
+%endif
 
 %clean
 rm -fr %buildroot
