@@ -153,6 +153,7 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/planner/views/*.la \
    $RPM_BUILD_ROOT%{_datadir}/doc/planner \
    $RPM_BUILD_ROOT%{_datadir}/mime/{globs,XMLnamespaces,application,magic,aliases,subclasses}
 
+%if %mdkversion < 200900
 %post
 %update_scrollkeeper
 %update_menus
@@ -160,16 +161,19 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/planner/views/*.la \
 %update_mime_database
 %post_install_gconf_schemas planner
 %update_icon_cache hicolor
+%endif
 
 %preun
 %preun_uninstall_gconf_schemas planner
 
+%if %mdkversion < 200900
 %postun
 %clean_scrollkeeper
 %{clean_desktop_database}
 %clean_mime_database
 %clean_icon_cache hicolor
 %clean_menus
+%endif
 
 
 %if %mdkversion < 200900
