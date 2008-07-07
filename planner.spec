@@ -38,6 +38,8 @@ BuildRequires:	intltool
 BuildRequires:	evolution-data-server-devel
 BuildRequires:	mono-devel
 BuildRequires:  desktop-file-utils
+#gw temporary, linkage problem:
+BuildRequires: gnome-pilot-devel
 
 Requires:	rarian
 Obsoletes:	mrproject
