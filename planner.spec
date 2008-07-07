@@ -10,7 +10,7 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.3
-Release:	%mkrel 2
+Release:	%mkrel 3
 License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
@@ -24,7 +24,6 @@ BuildRequires:	libgsf-devel
 BuildRequires:	libgnomeprintui-devel >= 2.2
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libxslt-devel >= 1.1.23
-BuildRequires:	perl-XML-Parser
 %if %{build_gda}
 BuildRequires:	gda2.0-devel > 3.0.0
 %endif
