@@ -13,7 +13,7 @@ Version:	0.14.3
 Release:	%mkrel 3
 License: 	GPLv2+
 Group: 		Office
-Url:		http://developer.imendio.com/projects/planner
+Url:		http://live.gnome.org/Planner
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.bz2
 
 #gw fix build: http://bugzilla.gnome.org/show_bug.cgi?id=539993
