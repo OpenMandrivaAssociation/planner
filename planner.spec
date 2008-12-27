@@ -17,8 +17,10 @@ Url:		http://live.gnome.org/Planner
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.bz2
 
 #gw fix build: http://bugzilla.gnome.org/show_bug.cgi?id=539993
-Patch:		planner-0.14.3-gcc4.3.patch
+Patch0:		planner-0.14.3-gcc4.3.patch
 Patch1:		planner-0.14.2-evolution.patch
+Patch2:		planner-0.14.3-fix-linkage.patch
+Patch3:		planner-0.14.3-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
@@ -103,8 +105,10 @@ Evolution support for Planner, this plugin can be used with evolution.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %patch1 -p1 -b .evolution
+%patch2 -p0
+%patch3 -p0
 
 #fix build
 intltoolize --force
@@ -122,7 +126,7 @@ autoconf
 # FIXME: pygtk-codegen-2.0 creates code, which breaks strict aliasing
 sed -i 's/^CFLAGS =/& -fno-strict-aliasing/' python/Makefile.in
 
-make LIBS=-lm
+make
 
 %install
 rm -fr $RPM_BUILD_ROOT
