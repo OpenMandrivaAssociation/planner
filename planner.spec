@@ -30,9 +30,11 @@ BuildRequires:	pygtk2.0-devel
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	evolution-data-server-devel
+BuildRequires:	evolution-devel
 BuildRequires:	mono-devel
 BuildRequires:  desktop-file-utils
-
+#gw temporary, linkage problem with evolution:
+BuildRequires: gnome-pilot-devel
 Requires:	rarian
 Obsoletes:	mrproject
 Provides:	mrproject = %{version}-%{release}
