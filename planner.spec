@@ -9,22 +9,16 @@
 
 Summary: 	%Summary
 Name: 		planner
-Version:	0.14.3
-Release:	%mkrel 6
+Version:	0.14.4
+Release:	%mkrel 1
 License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.bz2
-
-#gw fix build: http://bugzilla.gnome.org/show_bug.cgi?id=539993
-Patch0:		planner-0.14.3-gcc4.3.patch
-Patch1:		planner-0.14.2-evolution.patch
-Patch2:		planner-0.14.3-fix-linkage.patch
-Patch3:		planner-0.14.3-fix-str-fmt.patch
+Patch3:		planner-0.14.4-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
-BuildRequires:	libgnomeprintui-devel >= 2.2
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libxslt-devel >= 1.1.23
 %if %{build_gda}
@@ -34,13 +28,10 @@ BuildRequires:	rarian
 Buildrequires:	python-devel
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	gtk-doc
-BuildRequires:	evolution-devel
 BuildRequires:	intltool
 BuildRequires:	evolution-data-server-devel
 BuildRequires:	mono-devel
 BuildRequires:  desktop-file-utils
-#gw temporary, linkage problem:
-BuildRequires: gnome-pilot-devel
 
 Requires:	rarian
 Obsoletes:	mrproject
@@ -98,6 +89,7 @@ in a PostgreSQL database.
 Summary:        Planner evolution support
 Group:          Office
 Requires:       %{name} = %{version}-%{release}
+Requires:	evolution
 
 %description    evolution
 Evolution support for Planner, this plugin can be used with evolution.
@@ -105,22 +97,12 @@ Evolution support for Planner, this plugin can be used with evolution.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1 -b .evolution
-%patch2 -p0
-%patch3 -p0
-
-#fix build
-intltoolize --force
-aclocal
-automake -f -i
-autoconf
+%patch3 -p1 -b .fix-str-fmt
 
 %build
-
 %configure2_5x --enable-gtk-doc --enable-python --enable-python-plugin --enable-eds --enable-eds-backend --disable-update-mimedb \
 	%if %{build_gda}
-		--enable-database=yes
+		--with-database
 	%endif
 
 # FIXME: pygtk-codegen-2.0 creates code, which breaks strict aliasing
