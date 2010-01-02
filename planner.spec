@@ -16,6 +16,8 @@ Group: 		Office
 Url:		http://live.gnome.org/Planner
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.bz2
 Patch3:		planner-0.14.4-fix-str-fmt.patch
+Patch4:		planner-0.14.4-linkage.patch
+Patch5:		planner-0.14.4-install.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
@@ -33,6 +35,7 @@ BuildRequires:	evolution-data-server-devel
 BuildRequires:	evolution-devel
 BuildRequires:	mono-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:	gnome-common
 #gw temporary, linkage problem with evolution:
 BuildRequires: gnome-pilot-devel
 Requires:	rarian
@@ -100,8 +103,11 @@ Evolution support for Planner, this plugin can be used with evolution.
 %prep
 %setup -q
 %patch3 -p1 -b .fix-str-fmt
+%patch4 -p0 -b .link
+%patch5 -p0 -b .install
 
 %build
+NOCONFIGURE=yes gnome-autogen.sh
 %configure2_5x --enable-gtk-doc --enable-python --enable-python-plugin --enable-eds --enable-eds-backend --disable-update-mimedb \
 	%if %{build_gda}
 		--with-database
@@ -110,7 +116,7 @@ Evolution support for Planner, this plugin can be used with evolution.
 # FIXME: pygtk-codegen-2.0 creates code, which breaks strict aliasing
 sed -i 's/^CFLAGS =/& -fno-strict-aliasing/' python/Makefile.in
 
-make
+%make
 
 %install
 rm -fr $RPM_BUILD_ROOT
