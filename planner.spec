@@ -108,7 +108,7 @@ Evolution support for Planner, this plugin can be used with evolution.
 
 %build
 NOCONFIGURE=yes gnome-autogen.sh
-%configure2_5x --enable-gtk-doc --enable-python --enable-python-plugin --enable-eds --enable-eds-backend --disable-update-mimedb \
+%configure2_5x --enable-gtk-doc --enable-python --enable-python-plugin --enable-eds --enable-eds-backend --disable-update-mimedb --disable-schemas-install \
 	%if %{build_gda}
 		--with-database
 	%endif
