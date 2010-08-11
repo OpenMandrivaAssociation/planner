@@ -3,6 +3,8 @@
 %define lib_name %mklibname planner %{lib_api} %{lib_major}
 %define develname %mklibname -d planner
 %define build_gda 1
+#gw planner 0.14.4 does not build with evo 2.31.6
+%define build_evolution 0
 %define title Planner
 %define longtitle Project management tool
 %define Summary Planner is a project management application for GNOME
@@ -10,7 +12,7 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.4
-Release:	%mkrel 4
+Release:	%mkrel 5
 License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
@@ -31,13 +33,8 @@ Buildrequires:	python-devel
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
-BuildRequires:	evolution-data-server-devel
-BuildRequires:	evolution-devel
-BuildRequires:	mono-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:	gnome-common
-#gw temporary, linkage problem with evolution:
-BuildRequires: gnome-pilot-devel
 Requires:	rarian
 Obsoletes:	mrproject
 Provides:	mrproject = %{version}-%{release}
@@ -90,15 +87,19 @@ in a PostgreSQL database.
 
 %endif
 
+%if %build_evolution
 %package        evolution
 Summary:        Planner evolution support
 Group:          Office
 Requires:       %{name} = %{version}-%{release}
 Requires:	evolution
+BuildRequires:	evolution-data-server-devel
+BuildRequires:	evolution-devel
+BuildRequires:	mono-devel
 
 %description    evolution
 Evolution support for Planner, this plugin can be used with evolution.
- 
+%endif 
 
 %prep
 %setup -q
@@ -108,7 +109,11 @@ Evolution support for Planner, this plugin can be used with evolution.
 
 %build
 NOCONFIGURE=yes gnome-autogen.sh
-%configure2_5x --enable-gtk-doc --enable-python --enable-python-plugin --enable-eds --enable-eds-backend --disable-update-mimedb --disable-schemas-install \
+%configure2_5x --enable-gtk-doc --enable-python --enable-python-plugin \
+%if %build_evolution
+--enable-eds --enable-eds-backend \
+%endif
+--disable-update-mimedb --disable-schemas-install \
 	%if %{build_gda}
 		--with-database
 	%endif
@@ -150,36 +155,8 @@ rm -rf $RPM_BUILD_ROOT%{_libdir}/planner/views/*.la \
    $RPM_BUILD_ROOT%{_datadir}/doc/planner \
    $RPM_BUILD_ROOT%{_datadir}/mime/{globs,XMLnamespaces,application,magic,aliases,subclasses}
 
-%if %mdkversion < 200900
-%post
-%update_scrollkeeper
-%update_menus
-%{update_desktop_database}
-%update_mime_database
-%post_install_gconf_schemas planner
-%update_icon_cache hicolor
-%endif
-
 %preun
 %preun_uninstall_gconf_schemas planner
-
-%if %mdkversion < 200900
-%postun
-%clean_scrollkeeper
-%{clean_desktop_database}
-%clean_mime_database
-%clean_icon_cache hicolor
-%clean_menus
-%endif
-
-
-%if %mdkversion < 200900
-%post -n %{lib_name} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{lib_name} -p /sbin/ldconfig
-%endif
 
 %clean
 rm -fr %buildroot
@@ -251,10 +228,10 @@ rm -fr %buildroot
 %{_datadir}/planner/sql
 %endif
 
+%if %build_evolution
 %files evolution
 %defattr(-,root,root)
 %{_libdir}/evolution-data-server-1.2/extensions/*
 %{_libdir}/evolution/*/plugins/*
 %{_libdir}/planner/plugins/libeds-plugin.so
-
-
+%endif
