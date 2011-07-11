@@ -11,15 +11,14 @@
 
 Summary: 	%Summary
 Name: 		planner
-Version:	0.14.4
-Release:	%mkrel 8
+Version:	0.14.5
+Release:	%mkrel 1
 License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
-Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.bz2
-Patch3:		planner-0.14.4-fix-str-fmt.patch
+Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.xz
+Patch3:		planner-0.14.5-fix-str-fmt.patch
 Patch4:		planner-0.14.4-linkage.patch
-Patch5:		planner-0.14.4-install.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
@@ -105,7 +104,6 @@ Evolution support for Planner, this plugin can be used with evolution.
 %setup -q
 %patch3 -p1 -b .fix-str-fmt
 %patch4 -p0 -b .link
-%patch5 -p0 -b .install
 
 %build
 NOCONFIGURE=yes gnome-autogen.sh
