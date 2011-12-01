@@ -122,19 +122,19 @@ sed -i 's/^CFLAGS =/& -fno-strict-aliasing/' python/Makefile.in
 %make
 
 %install
-rm -fr $RPM_BUILD_ROOT
+rm -fr %{buildroot}
 
 %makeinstall_std
 
-sed -i -e 's/^\(Icon=.*\).png$/\1/g' $RPM_BUILD_ROOT%{_datadir}/applications/planner.desktop 
+sed -i -e 's/^\(Icon=.*\).png$/\1/g' %{buildroot}%{_datadir}/applications/planner.desktop 
 
 #duplicate comments to GenericName for KDE (Mdv bug #33406)
-sed -i -e 's/^Comment\(.*\)$/GenericName\1\nComment\1/g' $RPM_BUILD_ROOT%{_datadir}/applications/planner.desktop 
+sed -i -e 's/^Comment\(.*\)$/GenericName\1\nComment\1/g' %{buildroot}%{_datadir}/applications/planner.desktop 
 
 desktop-file-install --vendor="" \
   --add-category="GTK" \
   --add-category="GNOME" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 
 %find_lang %{name} --with-gnome
@@ -143,15 +143,15 @@ echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s
 done
 
 # remove unpackaged files
-rm -rf $RPM_BUILD_ROOT%{_libdir}/planner/views/*.la \
-   $RPM_BUILD_ROOT%{_libdir}/planner/plugins/*.la \
-   $RPM_BUILD_ROOT%{_libdir}/planner/file-modules/*.la \
-   $RPM_BUILD_ROOT%{_libdir}/planner/storage-modules/*.la \
-   $RPM_BUILD_ROOT%{_libdir}/planner/*.la \
-   $RPM_BUILD_ROOT%{_libdir}/evolution-data-server-1.2/extensions/*.la \
-   $RPM_BUILD_ROOT%{_libdir}/evolution/2.4/plugins/*.la \
-   $RPM_BUILD_ROOT%{_datadir}/doc/planner \
-   $RPM_BUILD_ROOT%{_datadir}/mime/{globs,XMLnamespaces,application,magic,aliases,subclasses}
+rm -rf %{buildroot}%{_libdir}/planner/views/*.la \
+   %{buildroot}%{_libdir}/planner/plugins/*.la \
+   %{buildroot}%{_libdir}/planner/file-modules/*.la \
+   %{buildroot}%{_libdir}/planner/storage-modules/*.la \
+   %{buildroot}%{_libdir}/planner/*.la \
+   %{buildroot}%{_libdir}/evolution-data-server-1.2/extensions/*.la \
+   %{buildroot}%{_libdir}/evolution/2.4/plugins/*.la \
+   %{buildroot}%{_datadir}/doc/planner \
+   %{buildroot}%{_datadir}/mime/{globs,XMLnamespaces,application,magic,aliases,subclasses}
 
 %preun
 %preun_uninstall_gconf_schemas planner
