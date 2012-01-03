@@ -17,6 +17,8 @@ License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.xz
+Patch0:		planner-0.14.6-glib-includes.patch
+Patch1:		planner-0.14.6-format-strings.patch
 Patch4:		planner-0.14.4-linkage.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
@@ -101,6 +103,8 @@ Evolution support for Planner, this plugin can be used with evolution.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1 -b .format-strings
 %patch4 -p0 -b .link
 
 %build
