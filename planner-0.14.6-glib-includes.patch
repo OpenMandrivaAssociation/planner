@@ -1,0 +1,840 @@
+--- planner-0.14.6/eds-backend/planner-source/planner-source.c.glib-includes	2012-01-03 09:51:51.624644133 +0100
++++ planner-0.14.6/eds-backend/planner-source/planner-source.c	2012-01-03 09:58:48.237226326 +0100
+@@ -24,7 +24,7 @@
+ 
+ #include <gconf/gconf-client.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <e-util/e-config.h>
+ #include <calendar/gui/e-cal-config.h>
+--- planner-0.14.6/libplanner/mrp-application.c.glib-includes	2012-01-03 09:51:51.908644594 +0100
++++ planner-0.14.6/libplanner/mrp-application.c	2012-01-03 09:58:48.437226564 +0100
+@@ -25,7 +25,7 @@
+ 
+ #include <stdlib.h>
+ 
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-file-module.h"
+ #include "mrp-private.h"
+ #include "mrp-application.h"
+--- planner-0.14.6/libplanner/mrp-assignment.c.glib-includes	2012-01-03 09:51:51.852644504 +0100
++++ planner-0.14.6/libplanner/mrp-assignment.c	2012-01-03 09:58:48.277226375 +0100
+@@ -22,7 +22,7 @@
+ 
+ #include <config.h>
+ 
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-task.h"
+ #include "mrp-resource.h"
+ #include "mrp-marshal.h"
+--- planner-0.14.6/libplanner/mrp-calendar.c.glib-includes	2012-01-03 09:51:51.917644608 +0100
++++ planner-0.14.6/libplanner/mrp-calendar.c	2012-01-03 09:58:48.462226595 +0100
+@@ -25,7 +25,7 @@
+ #include <string.h>
+ 
+ #include "mrp-marshal.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-private.h"
+ #include "mrp-time.h"
+ #include "mrp-calendar.h"
+--- planner-0.14.6/libplanner/mrp-day.c.glib-includes	2012-01-03 09:51:51.960644679 +0100
++++ planner-0.14.6/libplanner/mrp-day.c	2012-01-03 09:58:48.602226759 +0100
+@@ -21,7 +21,7 @@
+  */
+ 
+ #include "mrp-private.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-day.h"
+ 
+ struct _MrpDay {
+--- planner-0.14.6/libplanner/mrp-file-module.c.glib-includes	2012-01-03 09:51:51.925644621 +0100
++++ planner-0.14.6/libplanner/mrp-file-module.c	2012-01-03 09:58:48.468226601 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <string.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "libplanner/mrp-paths.h"
+ #include "mrp-file-module.h"
+ 
+--- planner-0.14.6/libplanner/mrp-group.c.glib-includes	2012-01-03 09:51:51.975644703 +0100
++++ planner-0.14.6/libplanner/mrp-group.c	2012-01-03 09:58:48.664226836 +0100
+@@ -22,7 +22,7 @@
+ 
+ #include <config.h>
+ #include "string.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-group.h"
+ 
+ struct _MrpGroupPriv {
+--- planner-0.14.6/libplanner/mrp-old-xml.c.glib-includes	2012-01-03 09:51:51.934644636 +0100
++++ planner-0.14.6/libplanner/mrp-old-xml.c	2012-01-03 09:58:48.501226640 +0100
+@@ -29,7 +29,7 @@
+ #include <stdlib.h>
+ #include "mrp-private.h"
+ #include "mrp-error.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-task.h"
+ #include "mrp-resource.h"
+ #include "mrp-group.h"
+--- planner-0.14.6/libplanner/mrp-parser.c.glib-includes	2012-01-03 09:51:51.943644651 +0100
++++ planner-0.14.6/libplanner/mrp-parser.c	2012-01-03 09:58:48.538226685 +0100
+@@ -35,7 +35,7 @@
+ #include <libxml/xmlmemory.h>
+ #include "mrp-private.h"
+ #include "mrp-error.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-task.h"
+ #include "mrp-resource.h"
+ #include "mrp-group.h"
+--- planner-0.14.6/libplanner/mrp-project.c.glib-includes	2012-01-03 09:51:51.967644690 +0100
++++ planner-0.14.6/libplanner/mrp-project.c	2012-01-03 09:58:48.650226818 +0100
+@@ -25,7 +25,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include "mrp-error.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-marshal.h"
+ #include "mrp-task-manager.h"
+ #include "mrp-storage-module-factory.h"
+--- planner-0.14.6/libplanner/mrp-property.c.glib-includes	2012-01-03 09:51:51.990644728 +0100
++++ planner-0.14.6/libplanner/mrp-property.c	2012-01-03 09:58:48.707226885 +0100
+@@ -24,7 +24,7 @@
+ #include <config.h>
+ 
+ #include "mrp-private.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-project.h"
+ #include "mrp-property.h"
+ 
+--- planner-0.14.6/libplanner/mrp-relation.c.glib-includes	2012-01-03 09:51:51.894644571 +0100
++++ planner-0.14.6/libplanner/mrp-relation.c	2012-01-03 09:58:48.430226558 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <string.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-types.h"
+ #include "mrp-marshal.h"
+ #include "mrp-relation.h"
+--- planner-0.14.6/libplanner/mrp-resource.c.glib-includes	2012-01-03 09:51:51.874644539 +0100
++++ planner-0.14.6/libplanner/mrp-resource.c	2012-01-03 09:58:48.371226486 +0100
+@@ -26,7 +26,7 @@
+ #include <string.h>
+ #include "mrp-private.h"
+ #include "mrp-marshal.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-assignment.h"
+ #include "mrp-group.h"
+ #include "mrp-task.h"
+--- planner-0.14.6/libplanner/mrp-sql.c.glib-includes	2012-01-03 09:51:51.866644526 +0100
++++ planner-0.14.6/libplanner/mrp-sql.c	2012-01-03 09:58:48.350226461 +0100
+@@ -25,7 +25,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libgda/libgda.h>
+ #include <libplanner/planner.h>
+ #include <libplanner/mrp-private.h>
+--- planner-0.14.6/libplanner/mrp-storage-sql.c.glib-includes	2012-01-03 09:51:51.983644717 +0100
++++ planner-0.14.6/libplanner/mrp-storage-sql.c	2012-01-03 09:58:48.690226866 +0100
+@@ -27,7 +27,7 @@
+ #include "mrp-error.h"
+ #include "mrp-storage-module.h"
+ #include "mrp-private.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-storage-sql.h"
+ #include "mrp-sql.h"
+ 
+--- planner-0.14.6/libplanner/mrp-task.c.glib-includes	2012-01-03 09:51:51.882644552 +0100
++++ planner-0.14.6/libplanner/mrp-task.c	2012-01-03 09:58:48.410226531 +0100
+@@ -24,7 +24,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include "mrp-marshal.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-private.h"
+ #include "mrp-resource.h"
+ #include "mrp-error.h"
+--- planner-0.14.6/libplanner/mrp-task-manager.c.glib-includes	2012-01-03 09:51:51.952644666 +0100
++++ planner-0.14.6/libplanner/mrp-task-manager.c	2012-01-03 09:58:48.595226751 +0100
+@@ -25,8 +25,8 @@
+ #include <config.h>
+ #include <time.h>
+ #include <math.h>
+-#include <glib-object.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
++#include <glib.h>
+ #include "mrp-marshal.h"
+ #include "mrp-storage-module.h"
+ #include "mrp-task-manager.h"
+--- planner-0.14.6/libplanner/mrp-time.c.glib-includes	2012-01-03 09:51:52.007644756 +0100
++++ planner-0.14.6/libplanner/mrp-time.c	2012-01-03 09:58:48.763226952 +0100
+@@ -22,7 +22,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib-object.h>
++#include <glib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+@@ -33,7 +33,7 @@
+ #endif
+ #include "mrp-time.h"
+ #include "mrp-types.h"
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "mrp-private.h"
+ 
+ struct _MrpTime {
+--- planner-0.14.6/libplanner/mrp-xsl.c.glib-includes	2012-01-03 09:51:51.999644743 +0100
++++ planner-0.14.6/libplanner/mrp-xsl.c	2012-01-03 09:58:48.713226892 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gmodule.h>
+ #include <libxslt/xslt.h>
+ #include <libxslt/transform.h>
+--- planner-0.14.6/src/planner-application.c.glib-includes	2012-01-03 09:51:52.429645441 +0100
++++ planner-0.14.6/src/planner-application.c	2012-01-03 09:58:49.858228253 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-window.h"
+ #include "planner-application.h"
+ 
+--- planner-0.14.6/src/planner-assignment-model.c.glib-includes	2012-01-03 09:51:52.445645467 +0100
++++ planner-0.14.6/src/planner-assignment-model.c	2012-01-03 09:58:49.879228278 +0100
+@@ -22,7 +22,7 @@
+ 
+ #include <config.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libplanner/mrp-assignment.h>
+ #include <libplanner/mrp-resource.h>
+ #include "planner-assignment-model.h"
+--- planner-0.14.6/src/planner-calendar-dialog.c.glib-includes	2012-01-03 09:51:52.498645553 +0100
++++ planner-0.14.6/src/planner-calendar-dialog.c	2012-01-03 09:58:50.025228451 +0100
+@@ -23,7 +23,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-day.h>
+--- planner-0.14.6/src/planner-calendar-selector.c.glib-includes	2012-01-03 09:51:52.291645217 +0100
++++ planner-0.14.6/src/planner-calendar-selector.c	2012-01-03 09:58:49.611227960 +0100
+@@ -21,7 +21,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-day.h>
+--- planner-0.14.6/src/planner-cell-renderer-date.c.glib-includes	2012-01-03 09:51:52.221645103 +0100
++++ planner-0.14.6/src/planner-cell-renderer-date.c	2012-01-03 09:58:49.394227702 +0100
+@@ -25,7 +25,7 @@
+ #include <stdlib.h>
+ #include <gdk/gdkkeysyms.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-marshal.h"
+ #include "planner-format.h"
+ #include "planner-cell-renderer-date.h"
+--- planner-0.14.6/src/planner-cmd-manager.c.glib-includes	2012-01-03 09:51:52.144644978 +0100
++++ planner-0.14.6/src/planner-cmd-manager.c	2012-01-03 09:58:49.224227501 +0100
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-cmd-manager.h"
+ #include "planner-marshal.h"
+ 
+--- planner-0.14.6/src/planner-column-dialog.c.glib-includes	2012-01-03 09:51:52.024644783 +0100
++++ planner-0.14.6/src/planner-column-dialog.c	2012-01-03 09:58:48.904227119 +0100
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+ #include "libplanner/mrp-paths.h"
+--- planner-0.14.6/src/planner-day-type-dialog.c.glib-includes	2012-01-03 09:51:52.368645342 +0100
++++ planner-0.14.6/src/planner-day-type-dialog.c	2012-01-03 09:58:49.800228185 +0100
+@@ -22,7 +22,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-project.h>
+--- planner-0.14.6/src/planner-default-week-dialog.c.glib-includes	2012-01-03 09:51:52.385645369 +0100
++++ planner-0.14.6/src/planner-default-week-dialog.c	2012-01-03 09:58:49.813228199 +0100
+@@ -22,7 +22,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-project.h>
+--- planner-0.14.6/src/planner-eds-plugin.c.glib-includes	2012-01-03 09:51:52.352645316 +0100
++++ planner-0.14.6/src/planner-eds-plugin.c	2012-01-03 09:58:49.775228155 +0100
+@@ -24,7 +24,7 @@
+ 
+ #include <config.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <string.h>
+ #include <gdk/gdk.h>
+ #include <gdk/gdkkeysyms.h>
+--- planner-0.14.6/src/planner-format.c.glib-includes	2012-01-03 09:51:52.401645395 +0100
++++ planner-0.14.6/src/planner-format.c	2012-01-03 09:58:49.841228233 +0100
+@@ -27,7 +27,7 @@
+ #include <locale.h>
+ #include <math.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-format.h"
+ 
+ gchar *
+--- planner-0.14.6/src/planner-gantt-background.c.glib-includes	2012-01-03 09:51:52.085644882 +0100
++++ planner-0.14.6/src/planner-gantt-background.c	2012-01-03 09:58:49.043227285 +0100
+@@ -24,7 +24,7 @@
+ #include <math.h>
+ #include <time.h>
+ #include <string.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libplanner/mrp-project.h>
+ #include <libplanner/mrp-time.h>
+ #include "planner-gantt-background.h"
+--- planner-0.14.6/src/planner-gantt-chart.c.glib-includes	2012-01-03 09:51:52.316645257 +0100
++++ planner-0.14.6/src/planner-gantt-chart.c	2012-01-03 09:58:49.730228101 +0100
+@@ -28,7 +28,7 @@
+ #include <math.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdkkeysyms.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libplanner/mrp-task.h>
+ #include "planner-marshal.h"
+ #include "planner-conf.h"
+--- planner-0.14.6/src/planner-gantt-header.c.glib-includes	2012-01-03 09:51:52.179645034 +0100
++++ planner-0.14.6/src/planner-gantt-header.c	2012-01-03 09:58:49.314227607 +0100
+@@ -24,7 +24,7 @@
+ #include <string.h>
+ #include <time.h>
+ #include <math.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-time.h>
+ #include "planner-marshal.h"
+--- planner-0.14.6/src/planner-gantt-model.c.glib-includes	2012-01-03 09:51:52.238645131 +0100
++++ planner-0.14.6/src/planner-gantt-model.c	2012-01-03 09:58:49.447227765 +0100
+@@ -26,7 +26,7 @@
+ #include <time.h>
+ #include <glib.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libplanner/mrp-task.h>
+ #include "planner-marshal.h"
+ #include "planner-gantt-model.h"
+--- planner-0.14.6/src/planner-gantt-print.c.glib-includes	2012-01-03 09:51:52.474645513 +0100
++++ planner-0.14.6/src/planner-gantt-print.c	2012-01-03 09:58:49.934228344 +0100
+@@ -27,7 +27,7 @@
+ #include <libplanner/mrp-project.h>
+ #include <libplanner/mrp-task.h>
+ #include <libplanner/mrp-resource.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-print-job.h"
+ #include "planner-format.h"
+ #include "planner-gantt-model.h"
+--- planner-0.14.6/src/planner-gantt-row.c.glib-includes	2012-01-03 09:51:52.299645230 +0100
++++ planner-0.14.6/src/planner-gantt-row.c	2012-01-03 09:58:49.684228048 +0100
+@@ -29,7 +29,7 @@
+ #include <libplanner/mrp-resource.h>
+ #include <libplanner/mrp-task.h>
+ #include <libplanner/mrp-calendar.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libgnomecanvas/gnome-canvas.h>
+ #include "planner-marshal.h"
+ #include "planner-format.h"
+--- planner-0.14.6/src/planner-gantt-view.c.glib-includes	2012-01-03 09:51:52.118644936 +0100
++++ planner-0.14.6/src/planner-gantt-view.c	2012-01-03 09:58:49.184227452 +0100
+@@ -25,7 +25,7 @@
+ #include <string.h>
+ #include <time.h>
+ #include <math.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-task.h>
+ #include "libplanner/mrp-paths.h"
+--- planner-0.14.6/src/planner-group-dialog.c.glib-includes	2012-01-03 09:51:52.060644842 +0100
++++ planner-0.14.6/src/planner-group-dialog.c	2012-01-03 09:58:49.003227239 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <stdlib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+ #include "libplanner/mrp-paths.h"
+--- planner-0.14.6/src/planner-group-model.c.glib-includes	2012-01-03 09:51:52.213645090 +0100
++++ planner-0.14.6/src/planner-group-model.c	2012-01-03 09:58:49.379227683 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-group-model.h"
+ 
+ struct _PlannerGroupModelPriv {
+--- planner-0.14.6/src/planner-html-plugin.c.glib-includes	2012-01-03 09:51:52.453645480 +0100
++++ planner-0.14.6/src/planner-html-plugin.c	2012-01-03 09:58:49.887228288 +0100
+@@ -22,7 +22,7 @@
+ #include <glib.h>
+ #include <string.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ 
+ #include "libplanner/mrp-paths.h"
+ #include "planner-window.h"
+--- planner-0.14.6/src/planner-list-model.c.glib-includes	2012-01-03 09:51:52.093644895 +0100
++++ planner-0.14.6/src/planner-list-model.c	2012-01-03 09:58:49.071227319 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <string.h>
+ 
+ #include "planner-list-model.h"
+--- planner-0.14.6/src/planner-main.c.glib-includes	2012-01-03 09:51:52.282645202 +0100
++++ planner-0.14.6/src/planner-main.c	2012-01-03 09:58:49.605227954 +0100
+@@ -24,7 +24,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "libplanner/mrp-paths.h"
+ #include "planner-application.h"
+ #include "planner-window.h"
+--- planner-0.14.6/src/planner-msp-plugin.c.glib-includes	2012-01-03 09:51:52.490645540 +0100
++++ planner-0.14.6/src/planner-msp-plugin.c	2012-01-03 09:58:49.998228419 +0100
+@@ -25,7 +25,7 @@
+ #include <libxslt/xsltutils.h>
+ #include <libexslt/exslt.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include "libplanner/mrp-paths.h"
+ #include "planner-conf.h"
+--- planner-0.14.6/src/planner-phase-dialog.c.glib-includes	2012-01-03 09:51:52.360645329 +0100
++++ planner-0.14.6/src/planner-phase-dialog.c	2012-01-03 09:58:49.789228172 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <string.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-project.h>
+--- planner-0.14.6/src/planner-plugin-loader.c.glib-includes	2012-01-03 09:51:52.152644991 +0100
++++ planner-0.14.6/src/planner-plugin-loader.c	2012-01-03 09:58:49.228227503 +0100
+@@ -23,7 +23,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "libplanner/mrp-paths.h"
+ #include "planner-plugin.h"
+ #include "planner-plugin-loader.h"
+--- planner-0.14.6/src/planner-popup-button.c.glib-includes	2012-01-03 09:51:52.437645454 +0100
++++ planner-0.14.6/src/planner-popup-button.c	2012-01-03 09:58:49.864228260 +0100
+@@ -22,7 +22,7 @@
+ #include <stdlib.h>
+ #include <gdk/gdkkeysyms.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-marshal.h"
+ #include "planner-popup-button.h"
+ 
+--- planner-0.14.6/src/planner-predecessor-model.c.glib-includes	2012-01-03 09:51:52.330645279 +0100
++++ planner-0.14.6/src/planner-predecessor-model.c	2012-01-03 09:58:49.757228133 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-predecessor-model.h"
+ 
+ struct _PlannerPredecessorModelPriv {
+--- planner-0.14.6/src/planner-print-dialog.c.glib-includes	2012-01-03 09:51:52.042644811 +0100
++++ planner-0.14.6/src/planner-print-dialog.c	2012-01-03 09:58:48.921227141 +0100
+@@ -28,8 +28,8 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <string.h>
+-#include <glib/gi18n.h>
+-#include <glib/gstdio.h>
++#include <glib.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include "planner-view.h"
+ #include "planner-conf.h"
+--- planner-0.14.6/src/planner-print-job.c.glib-includes	2012-01-03 09:51:52.187645048 +0100
++++ planner-0.14.6/src/planner-print-job.c	2012-01-03 09:58:49.332227628 +0100
+@@ -22,8 +22,8 @@
+ 
+ #include <config.h>
+ #include <string.h>
+-#include <glib-object.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
++#include <glib.h>
+ #include "planner-print-job.h"
+ #include "planner-print-dialog.h"
+ #include "planner-view.h"
+--- planner-0.14.6/src/planner-project-properties.c.glib-includes	2012-01-03 09:51:52.273645187 +0100
++++ planner-0.14.6/src/planner-project-properties.c	2012-01-03 09:58:49.600227946 +0100
+@@ -30,7 +30,7 @@
+ #include <time.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libplanner/mrp-project.h>
+ #include <libplanner/mrp-time.h>
+ #include "libplanner/mrp-paths.h"
+--- planner-0.14.6/src/planner-property-dialog.c.glib-includes	2012-01-03 09:51:52.196645062 +0100
++++ planner-0.14.6/src/planner-property-dialog.c	2012-01-03 09:58:49.348227647 +0100
+@@ -27,7 +27,7 @@
+ #include <ctype.h>
+ #include <string.h>
+ #include <stdlib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-object.h>
+--- planner-0.14.6/src/planner-property-model.c.glib-includes	2012-01-03 09:51:52.409645407 +0100
++++ planner-0.14.6/src/planner-property-model.c	2012-01-03 09:58:49.845228239 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <string.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-property.h>
+ #include "planner-property-model.h"
+--- planner-0.14.6/src/planner-python-plugin.c.glib-includes	2012-01-03 09:51:52.077644869 +0100
++++ planner-0.14.6/src/planner-python-plugin.c	2012-01-03 09:58:49.030227269 +0100
+@@ -22,7 +22,7 @@
+ #include <Python.h>
+ #include <glib.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <pygobject.h>
+ #include "planner-window.h"
+ #include "planner-plugin.h"
+--- planner-0.14.6/src/planner-resource-cmd.c.glib-includes	2012-01-03 09:51:52.376645355 +0100
++++ planner-0.14.6/src/planner-resource-cmd.c	2012-01-03 09:58:49.802228187 +0100
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-resource-cmd.h"
+ 
+ typedef struct {
+--- planner-0.14.6/src/planner-resource-dialog.c.glib-includes	2012-01-03 09:51:52.101644908 +0100
++++ planner-0.14.6/src/planner-resource-dialog.c	2012-01-03 09:58:49.107227361 +0100
+@@ -27,7 +27,7 @@
+ #include <string.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libplanner/mrp-resource.h>
+ #include <libplanner/mrp-calendar.h>
+ #include <libplanner/mrp-time.h>
+--- planner-0.14.6/src/planner-resource-input-dialog.c.glib-includes	2012-01-03 09:51:52.308645244 +0100
++++ planner-0.14.6/src/planner-resource-input-dialog.c	2012-01-03 09:58:49.692228057 +0100
+@@ -23,7 +23,7 @@
+ #include <config.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "libplanner/mrp-paths.h"
+ #include "planner-marshal.h"
+ #include "planner-resource-input-dialog.h"
+--- planner-0.14.6/src/planner-resource-view.c.glib-includes	2012-01-03 09:51:52.110644922 +0100
++++ planner-0.14.6/src/planner-resource-view.c	2012-01-03 09:58:49.160227424 +0100
+@@ -27,7 +27,7 @@
+ #include <stdlib.h>
+ #include <time.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-project.h>
+ #include "libplanner/mrp-paths.h"
+--- planner-0.14.6/src/planner-scale-utils.c.glib-includes	2012-01-03 09:51:52.323645269 +0100
++++ planner-0.14.6/src/planner-scale-utils.c	2012-01-03 09:58:49.734228105 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <config.h>
+ #include <math.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-scale-utils.h"
+ 
+ #define WEEK    (60*60*24*7)
+--- planner-0.14.6/src/planner-sidebar.c.glib-includes	2012-01-03 09:51:52.033644797 +0100
++++ planner-0.14.6/src/planner-sidebar.c	2012-01-03 09:58:48.914227131 +0100
+@@ -24,7 +24,7 @@
+ 
+ #include <math.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-sidebar.h"
+ 
+ struct _PlannerSidebarPriv {
+--- planner-0.14.6/src/planner-sql-plugin.c.glib-includes	2012-01-03 09:51:52.015644769 +0100
++++ planner-0.14.6/src/planner-sql-plugin.c	2012-01-03 09:58:48.800226995 +0100
+@@ -26,7 +26,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <glib.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libgnomeui/gnome-entry.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+--- planner-0.14.6/src/planner-table-print-sheet.c.glib-includes	2012-01-03 09:51:52.393645382 +0100
++++ planner-0.14.6/src/planner-table-print-sheet.c	2012-01-03 09:58:49.829228219 +0100
+@@ -25,7 +25,7 @@
+ #include <string.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/planner.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-print-job.h"
+ #include "planner-table-print-sheet.h"
+ 
+--- planner-0.14.6/src/planner-task-cmd.c.glib-includes	2012-01-03 09:51:52.136644965 +0100
++++ planner-0.14.6/src/planner-task-cmd.c	2012-01-03 09:58:49.209227482 +0100
+@@ -20,7 +20,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-task-cmd.h"
+ #include "planner-task-tree.h"
+ 
+--- planner-0.14.6/src/planner-task-date-widget.c.glib-includes	2012-01-03 09:51:52.416645418 +0100
++++ planner-0.14.6/src/planner-task-date-widget.c	2012-01-03 09:58:49.853228248 +0100
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include "planner-marshal.h"
+ #include "libplanner/mrp-time.h"
+--- planner-0.14.6/src/planner-task-dialog.c.glib-includes	2012-01-03 09:51:52.482645527 +0100
++++ planner-0.14.6/src/planner-task-dialog.c	2012-01-03 09:58:49.989228409 +0100
+@@ -26,7 +26,7 @@
+ #include <time.h>
+ #include <string.h>
+ #include <stdlib.h> /* for atoi */
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-object.h>
+--- planner-0.14.6/src/planner-task-popup.c.glib-includes	2012-01-03 09:51:52.161645006 +0100
++++ planner-0.14.6/src/planner-task-popup.c	2012-01-03 09:58:49.232227510 +0100
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "libplanner/mrp-paths.h"
+ #include "planner-task-tree.h"
+ #include "planner-task-popup.h"
+--- planner-0.14.6/src/planner-task-tree.c.glib-includes	2012-01-03 09:51:52.255645158 +0100
++++ planner-0.14.6/src/planner-task-tree.c	2012-01-03 09:58:49.542227878 +0100
+@@ -28,7 +28,7 @@
+ #include <string.h>
+ #include <gdk/gdkkeysyms.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include "planner-format.h"
+ #include "planner-marshal.h"
+ #include "planner-cell-renderer-date.h"
+--- planner-0.14.6/src/planner-task-view.c.glib-includes	2012-01-03 09:51:52.069644856 +0100
++++ planner-0.14.6/src/planner-task-view.c	2012-01-03 09:58:49.024227264 +0100
+@@ -24,7 +24,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <time.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-task.h>
+ #include "planner-task-view.h"
+--- planner-0.14.6/src/planner-usage-chart.c.glib-includes	2012-01-03 09:51:52.246645144 +0100
++++ planner-0.14.6/src/planner-usage-chart.c	2012-01-03 09:58:49.475227798 +0100
+@@ -29,7 +29,7 @@
+ #include <math.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdkkeysyms.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libplanner/mrp-task.h>
+ #include <libplanner/mrp-resource.h>
+ #include <libplanner/mrp-assignment.h>
+--- planner-0.14.6/src/planner-usage-model.c.glib-includes	2012-01-03 09:51:52.170645020 +0100
++++ planner-0.14.6/src/planner-usage-model.c	2012-01-03 09:58:49.248227528 +0100
+@@ -28,7 +28,7 @@
+ #include <glib.h>
+ #include <stdio.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libplanner/mrp-task.h>
+ #include "planner-marshal.h"
+ #include "planner-usage-model.h"
+--- planner-0.14.6/src/planner-usage-row.c.glib-includes	2012-01-03 09:51:52.230645118 +0100
++++ planner-0.14.6/src/planner-usage-row.c	2012-01-03 09:58:49.425227739 +0100
+@@ -31,7 +31,7 @@
+ #include <libplanner/mrp-project.h>
+ #include <libplanner/mrp-resource.h>
+ #include <libplanner/mrp-task.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libgnomecanvas/gnome-canvas.h>
+ #include <libgnomecanvas/gnome-canvas-util.h>
+ #include "planner-marshal.h"
+--- planner-0.14.6/src/planner-usage-tree.c.glib-includes	2012-01-03 09:51:52.127644950 +0100
++++ planner-0.14.6/src/planner-usage-tree.c	2012-01-03 09:58:49.199227472 +0100
+@@ -26,7 +26,7 @@
+ #include <math.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include "planner-format.h"
+ #include "planner-marshal.h"
+--- planner-0.14.6/src/planner-usage-view.c.glib-includes	2012-01-03 09:51:52.205645077 +0100
++++ planner-0.14.6/src/planner-usage-view.c	2012-01-03 09:58:49.371227674 +0100
+@@ -21,7 +21,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-task.h>
+ #include <libplanner/mrp-resource.h>
+--- planner-0.14.6/src/planner-window.c.glib-includes	2012-01-03 09:51:52.051644826 +0100
++++ planner-0.14.6/src/planner-window.c	2012-01-03 09:58:48.973227202 +0100
+@@ -24,7 +24,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <math.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+--- planner-0.14.6/src/planner-working-time-dialog.c.glib-includes	2012-01-03 09:51:52.262645169 +0100
++++ planner-0.14.6/src/planner-working-time-dialog.c	2012-01-03 09:58:49.557227896 +0100
+@@ -23,7 +23,7 @@
+ 
+ #include <stdio.h>
+ #include <config.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+ #include <libplanner/mrp-project.h>
+--- planner-0.14.6/src/planner-xml-planner-plugin.c.glib-includes	2012-01-03 09:51:52.461645493 +0100
++++ planner-0.14.6/src/planner-xml-planner-plugin.c	2012-01-03 09:58:49.906228311 +0100
+@@ -24,7 +24,7 @@
+ #include <glib.h>
+ #include <glade/glade.h>
+ #include <gtk/gtk.h>
+-#include <glib/gi18n.h>
++#include <glib.h>
+ #include <libplanner/mrp-paths.h>
+ #include "planner-conf.h"
+ #include "planner-window.h"

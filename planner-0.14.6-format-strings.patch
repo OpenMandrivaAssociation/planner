@@ -1,0 +1,167 @@
+--- planner-0.14.6/libplanner/mrp-file-module.c.format-strings	2012-01-03 11:03:08.549074763 +0100
++++ planner-0.14.6/libplanner/mrp-file-module.c	2012-01-03 11:03:08.590074804 +0100
+@@ -122,7 +122,7 @@ mrp_file_reader_read_string (MrpFileRead
+ 	g_set_error (error,
+ 		     MRP_ERROR,
+ 		     MRP_ERROR_FAILED,
+-		     _("This format does not support reading"));
++		     "%s", _("This format does not support reading"));
+ 
+ 	return FALSE;
+ }
+--- planner-0.14.6/libplanner/mrp-parser.c.format-strings	2012-01-03 11:03:08.550074764 +0100
++++ planner-0.14.6/libplanner/mrp-parser.c	2012-01-03 11:03:08.591074805 +0100
+@@ -1059,7 +1059,7 @@ parser_build_xml_doc (MrpStorageMrprojec
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_SAVE_WRITE_FAILED,
+-			     _("Could not create XML tree"));
++			     "%s", _("Could not create XML tree"));
+ 		xmlFreeDoc (parser.doc);
+ 		parser.doc = NULL;
+ 	}
+@@ -1120,7 +1120,7 @@ mrp_parser_save (MrpStorageMrproject  *m
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_SAVE_WRITE_FAILED,
+-			     _("Could not write XML file"));
++			     "%s", _("Could not write XML file"));
+ 
+ 		return FALSE;
+ 	}
+@@ -1154,7 +1154,7 @@ mrp_parser_to_xml (MrpStorageMrproject
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_SAVE_WRITE_FAILED,
+-			     _("Could not create XML tree"));
++			     "%s", _("Could not create XML tree"));
+ 
+ 		return FALSE;
+ 	}
+--- planner-0.14.6/libplanner/mrp-project.c.format-strings	2012-01-03 11:03:08.551074765 +0100
++++ planner-0.14.6/libplanner/mrp-project.c	2012-01-03 11:03:08.592074806 +0100
+@@ -776,7 +776,7 @@ project_do_save (MrpProject   *project,
+ 		if (!project_set_storage (project, "sql")) {
+ 			g_set_error (error, MRP_ERROR,
+ 				     MRP_ERROR_NO_FILE_MODULE,
+-				     _("No support for SQL storage built into this version of Planner."));
++				     "%s", _("No support for SQL storage built into this version of Planner."));
+ 			return FALSE;
+ 		}
+ 	} else {
+@@ -813,7 +813,7 @@ mrp_project_save (MrpProject *project, g
+ 	if (priv->uri == NULL) {
+ 		g_set_error (error,
+ 			     MRP_ERROR, MRP_ERROR_INVALID_URI,
+-			     _("Invalid URI."));
++			     "%s", _("Invalid URI."));
+ 
+ 		return FALSE;
+ 	}
+@@ -1017,7 +1017,7 @@ mrp_project_load_from_xml (MrpProject *p
+ 	g_set_error (error,
+ 		     MRP_ERROR,
+ 		     MRP_ERROR_NO_FILE_MODULE,
+-		     _("Couldn't find a suitable file module for loading project"));
++		     "%s", _("Couldn't find a suitable file module for loading project"));
+ 
+ 	return FALSE;
+ }
+@@ -1060,7 +1060,7 @@ project_load_from_sql (MrpProject   *pro
+ 	if (!project_set_storage (project, "sql")) {
+ 		g_set_error (error, MRP_ERROR,
+ 			     MRP_ERROR_NO_FILE_MODULE,
+-			     _("No support for SQL storage built into this version of Planner."));
++			     "%s", _("No support for SQL storage built into this version of Planner."));
+ 		return FALSE;
+ 	}
+ 
+--- planner-0.14.6/libplanner/mrp-storage-sql.c.format-strings	2012-01-03 11:03:37.302103095 +0100
++++ planner-0.14.6/libplanner/mrp-storage-sql.c	2012-01-03 11:04:09.347134281 +0100
+@@ -203,7 +203,7 @@ storage_sql_parse_uri (const gchar  *uri
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_INVALID_URI,
+-			     _("Invalid SQL URI (must start with 'sql://' and contain '#')."));
++			     "%s", _("Invalid SQL URI (must start with 'sql://' and contain '#')."));
+ 		return FALSE;
+ 	}
+ 
+@@ -272,7 +272,7 @@ storage_sql_parse_uri (const gchar  *uri
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_INVALID_URI,
+-			     _("Invalid SQL URI (invalid project id)."));
++			     "%s", _("Invalid SQL URI (invalid project id)."));
+ 		goto fail;
+ 	}
+ 
+@@ -280,7 +280,7 @@ storage_sql_parse_uri (const gchar  *uri
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_INVALID_URI,
+-			     _("Invalid SQL URI (no database name specified)."));
++			     "%s", _("Invalid SQL URI (no database name specified)."));
+ 		goto fail;
+ 	}
+ 
+--- planner-0.14.6/libplanner/mrp-task.c.format-strings	2012-01-03 11:03:08.553074767 +0100
++++ planner-0.14.6/libplanner/mrp-task.c	2012-01-03 11:03:08.592074806 +0100
+@@ -1065,7 +1065,7 @@ mrp_task_add_predecessor (MrpTask
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_TASK_RELATION_FAILED,
+-			     _("Could not add a predecessor relation, because the tasks are already related."));
++			     "%s", _("Could not add a predecessor relation, because the tasks are already related."));
+ 
+ 		return NULL;
+ 	}
+@@ -1121,7 +1121,7 @@ mrp_task_add_predecessor (MrpTask
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_TASK_RELATION_FAILED,
+-			     _("Start to Finish relation cannot be set. Predecessor starts on project start date."));
++			     "%s", _("Start to Finish relation cannot be set. Predecessor starts on project start date."));
+ 
+ 		return NULL;
+ 	}
+--- planner-0.14.6/libplanner/mrp-task-manager.c.format-strings	2012-01-03 11:03:08.554074768 +0100
++++ planner-0.14.6/libplanner/mrp-task-manager.c	2012-01-03 11:03:08.593074807 +0100
+@@ -2600,7 +2600,7 @@ mrp_task_manager_check_predecessor (MrpT
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_TASK_RELATION_FAILED,
+-			     _("Cannot add a predecessor, because it would result in a loop."));
++			     "%s", _("Cannot add a predecessor, because it would result in a loop."));
+ 		return FALSE;
+ 	}
+ 
+@@ -2644,7 +2644,7 @@ mrp_task_manager_check_move (MrpTaskMana
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_TASK_MOVE_FAILED,
+-			     _("Cannot move the task, because it would result in a loop."));
++			     "%s", _("Cannot move the task, because it would result in a loop."));
+ 		return FALSE;
+ 	}
+ 
+--- planner-0.14.6/libplanner/mrp-xsl.c.format-strings	2012-01-03 11:03:08.555074769 +0100
++++ planner-0.14.6/libplanner/mrp-xsl.c	2012-01-03 11:03:08.593074807 +0100
+@@ -154,7 +154,7 @@ html_write (MrpFileWriter  *writer,
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_EXPORT_FAILED,
+-			     _("Export to HTML failed"));
++			     "%s", _("Export to HTML failed"));
+ 		ret = FALSE;
+ 	}
+ 
+@@ -202,7 +202,7 @@ xml_planner_pre012_write (MrpFileWriter
+ 		g_set_error (error,
+ 			     MRP_ERROR,
+ 			     MRP_ERROR_EXPORT_FAILED,
+-			     _("Export to HTML failed"));
++			     "%s", _("Export to HTML failed"));
+ 		ret = FALSE;
+ 	}
+ 
