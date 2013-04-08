@@ -165,3 +165,14 @@
  		ret = FALSE;
  	}
  
+--- planner-0.14.6/libplanner/mrp-sql.c.orig	2013-04-08 20:14:45.394441260 +0100
++++ planner-0.14.6/libplanner/mrp-sql.c	2013-04-08 20:16:15.697435984 +0100
+@@ -3708,7 +3708,7 @@
+ 	data->dict = gda_dict_new ();
+ 
+ 	if (!GDA_IS_DICT (data->dict)) {
+-		g_warning (_("Failed to create a dictionary for the database connection.\n"));
++		g_warning ("Failed to create a dictionary for the database connection.\n");
+ 		goto out;
+ 	}
+ 	gda_dict_set_connection (data->dict, data->con);
