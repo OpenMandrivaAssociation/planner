@@ -185,3 +185,25 @@
  		goto out;
  	}
  	gda_dict_set_connection (data->dict, data->con);
+--- planner-0.14.6/src/planner-html-plugin.c.orig	2013-04-08 21:45:12.663588454 +0100
++++ planner-0.14.6/src/planner-html-plugin.c	2013-04-08 22:11:33.859684423 +0100
+@@ -43,8 +43,8 @@
+ 
+ static const GtkActionEntry action_entries[] = {
+ 	{ "HTML Export", NULL,
+-	  N_("HTML"), NULL,
+-	  N_("Export project to HTML"),
++	  "HTML", NULL,
++	  "Export project to HTML",
+ 	  G_CALLBACK (html_plugin_export)
+ 	}
+ };
+@@ -76,7 +76,7 @@
+ 						 GTK_DIALOG_DESTROY_WITH_PARENT,
+ 						 GTK_MESSAGE_ERROR,
+ 						 GTK_BUTTONS_OK,
+-						 _("Could not export to HTML"));
++						 "%s", _("Could not export to HTML"));
+ 		gtk_dialog_run (GTK_DIALOG (dialog));
+ 		gtk_widget_destroy (dialog);
+ 	}
