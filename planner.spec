@@ -12,7 +12,7 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.6
-Release:	%mkrel 1
+Release:	2
 License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
@@ -20,6 +20,7 @@ Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.x
 Patch0:		planner-0.14.6-glib-includes.patch
 Patch1:		planner-0.14.6-format-strings.patch
 Patch4:		planner-0.14.4-linkage.patch
+Patch5:		planner-0.14.6-automake113.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
