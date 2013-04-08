@@ -8,6 +8,7 @@
 %define title Planner
 %define longtitle Project management tool
 %define Summary Planner is a project management application for GNOME
+%define _disable_ld_no_undefined 1
 
 Summary: 	%Summary
 Name: 		planner
