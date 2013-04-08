@@ -107,6 +107,7 @@ Evolution support for Planner, this plugin can be used with evolution.
 %patch0 -p1
 %patch1 -p1 -b .format-strings
 %patch4 -p0 -b .link
+%patch5 -p1 -b .automake113
 
 %build
 NOCONFIGURE=yes gnome-autogen.sh
