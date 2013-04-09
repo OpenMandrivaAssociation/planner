@@ -22,6 +22,7 @@ Patch0:		planner-0.14.6-glib-includes.patch
 Patch1:		planner-0.14.6-format-strings.patch
 Patch4:		planner-0.14.4-linkage.patch
 Patch5:		planner-0.14.6-automake113.patch
+Patch5:		planner-0.14.6-initializer.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
@@ -109,6 +110,7 @@ Evolution support for Planner, this plugin can be used with evolution.
 %patch1 -p1 -b .format-strings
 %patch4 -p0 -b .link
 %patch5 -p1 -b .automake113
+%patch6 -p1 -b .initializer
 
 %build
 NOCONFIGURE=yes gnome-autogen.sh
