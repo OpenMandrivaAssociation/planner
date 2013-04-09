@@ -185,3 +185,14 @@
  		goto out;
  	}
  	gda_dict_set_connection (data->dict, data->con);
+--- planner-0.14.6/src/planner-msp-plugin.c.orig	2013-04-09 08:38:56.586611480 +0100
++++ planner-0.14.6/src/planner-msp-plugin.c	2013-04-09 08:39:23.581609902 +0100
+@@ -114,7 +114,7 @@
+ 						 GTK_DIALOG_DESTROY_WITH_PARENT,
+ 						 GTK_MESSAGE_ERROR,
+ 						 GTK_BUTTONS_OK,
+-						 _("Couldn't import file."));
++						 "%s",_("Couldn't import file."));
+ 		gtk_widget_show (dialog);
+ 
+ 		gtk_dialog_run (GTK_DIALOG (dialog));
