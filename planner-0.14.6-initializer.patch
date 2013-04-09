@@ -445,3 +445,16 @@ diff -ur planner-0.14.6/src.orig/planner-usage-view.c planner-0.14.6/src/planner
  		0, /*GdkModifierType*/
  		0, /*keyval*/
  		GETTEXT_PACKAGE
+--- planner-0.14.6/src.orig/planner-main.c	2011-10-14 16:38:41.000000000 +0100
++++ planner-0.14.6/src/planner-main.c	2013-04-09 08:54:18.599557609 +0100
+@@ -36,8 +36,8 @@
+ static gchar **args_remaining = NULL;
+ 
+ static GOptionEntry options[] = {
+-		{ "geometry", 'g', 0, G_OPTION_ARG_STRING, &geometry, N_("Create the initial window with the given geometry."), N_("GEOMETRY")},
+-		{ G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_FILENAME_ARRAY, &args_remaining, NULL, N_("FILES") },
++		{ "geometry", 'g', 0, G_OPTION_ARG_STRING, &geometry, ("Create the initial window with the given geometry."), ("GEOMETRY")},
++		{ G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_FILENAME_ARRAY, &args_remaining, NULL, ("FILES") },
+ 		{ NULL }
+ 	};
+ 
