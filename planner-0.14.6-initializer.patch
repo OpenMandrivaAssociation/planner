@@ -354,3 +354,94 @@ diff -ur planner-0.14.6/src.orig/planner-usage-view.c planner-0.14.6/src/planner
  		gtk_dialog_run (GTK_DIALOG (dialog));
  		gtk_widget_destroy (dialog);
  	}
+--- planner-0.14.6/src.orig/planner-application.c	2011-12-22 22:53:44.000000000 +0000
++++ planner-0.14.6/src/planner-application.c	2013-04-09 08:32:14.312634984 +0100
+@@ -51,77 +51,77 @@
+ static GtkStockItem stock_items[] = {
+ 	{
+ 		"planner-stock-insert-task",
+-		N_("Insert"),
++		("Insert"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+ 	{
+ 		"planner-stock-remove-task",
+-		N_("Remove"),
++		("Remove"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+ 	{
+ 		"planner-stock-unlink-task",
+-		N_("Unlink"),
++		("Unlink"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+ 	{
+ 		"planner-stock-link-tasks",
+-		N_("Link"),
++		("Link"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+ 	{
+ 		"planner-stock-indent-task",
+-		N_("Indent"),
++		("Indent"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+ 	{
+ 		"planner-stock-unindent-task",
+-		N_("Unindent"),
++		("Unindent"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+ 	{
+ 		"planner-stock-move-task-up",
+-		N_("Move up"),
++		("Move up"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+ 	{
+ 		"planner-stock-move-task-down",
+-		N_("Move down"),
++		("Move down"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+ 	{
+ 		"planner-stock-insert-resource",
+-		N_("Insert"),
++		("Insert"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+        	{
+ 		"planner-stock-remove-resource",
+-		N_("Remove"),
++		("Remove"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
+ 	},
+ 	{
+ 		"planner-stock-edit-groups",
+-		N_("Edit"),
++		("Edit"),
+ 		0, /*GdkModifierType*/
+ 		0, /*keyval*/
+ 		GETTEXT_PACKAGE
