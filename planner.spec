@@ -8,7 +8,6 @@
 %define title Planner
 %define longtitle Project management tool
 %define Summary Planner is a project management application for GNOME
-%define _disable_ld_no_undefined 1
 
 Summary: 	%Summary
 Name: 		planner
@@ -18,11 +17,9 @@ License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.xz
-Patch0:		planner-0.14.6-glib-includes.patch
 Patch1:		planner-0.14.6-format-strings.patch
 Patch4:		planner-0.14.4-linkage.patch
 Patch5:		planner-0.14.6-automake113.patch
-Patch6:		planner-0.14.6-initializer.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
@@ -106,11 +103,9 @@ Evolution support for Planner, this plugin can be used with evolution.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1 -b .format-strings
 %patch4 -p0 -b .link
 %patch5 -p1 -b .automake113
-%patch6 -p1 -b .initializer
 
 %build
 NOCONFIGURE=yes gnome-autogen.sh
@@ -145,9 +140,6 @@ desktop-file-install --vendor="" \
 
 
 %find_lang %{name} --with-gnome
-for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do 
-echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name.lang
-done
 
 # remove unpackaged files
 rm -rf %{buildroot}%{_libdir}/planner/views/*.la \
@@ -199,8 +191,6 @@ rm -fr %buildroot
 %dir %{_datadir}/planner/images/
 %{_datadir}/planner/images/*
 %{_datadir}/pixmaps/*
-%dir %{_datadir}/omf/*
-%{_datadir}/omf/*/*-C.omf
 %{_datadir}/mime/packages/*
 %{_datadir}/icons/hicolor/48x48/mimetypes/*
 %{_mandir}/man1/planner.*
@@ -213,7 +203,6 @@ rm -fr %buildroot
 %defattr(-,root,root)
 %doc %{_datadir}/gtk-doc/html/libplanner
 %{_libdir}/*.so
-%{_libdir}/*.la
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 
