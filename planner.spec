@@ -23,8 +23,8 @@ Patch5:		planner-0.14.6-automake113.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
-BuildRequires:	libgnomeui2-devel
-BuildRequires:	libxslt-devel >= 1.1.23
+BuildRequires:	pkgconfig(libgnomeui-2.0)
+BuildRequires:	pkgconfig(libexslt) >= 1.1.23
 %if %{build_gda}
 BuildRequires:	gda2.0-devel > 3.0.0
 %endif
