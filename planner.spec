@@ -12,7 +12,7 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.6
-Release:	3
+Release:	4
 License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
@@ -23,7 +23,7 @@ Patch5:		planner-0.14.6-automake113.patch
 BuildRequires:	libglade2.0-devel
 BuildRequires:	libgsf-devel
 BuildRequires:	pkgconfig(libgnomeui-2.0)
-BuildRequires:	pkgconfig(libexslt) >= 1.1.23
+BuildRequires:	pkgconfig(libexslt)
 %if %{build_gda}
 BuildRequires:	gda2.0-devel > 3.0.0
 %endif
