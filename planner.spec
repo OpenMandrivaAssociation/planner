@@ -20,8 +20,8 @@ Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.x
 Patch1:		planner-0.14.6-format-strings.patch
 Patch4:		planner-0.14.4-linkage.patch
 Patch5:		planner-0.14.6-automake113.patch
-BuildRequires:	libglade2.0-devel
-BuildRequires:	libgsf-devel
+BuildRequires:	pkgconfig(libglade-2.0)
+BuildRequires:	pkgconfig(libgsf-1)
 BuildRequires:	pkgconfig(libgnomeui-2.0)
 BuildRequires:	pkgconfig(libexslt)
 %if %{build_gda}
