@@ -13,7 +13,7 @@
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.6
-Release:	6
+Release:	7
 License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
