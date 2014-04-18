@@ -8,33 +8,46 @@
 %define title Planner
 %define longtitle Project management tool
 %define Summary Planner is a project management application for GNOME
+%define debug_package %{nil}
+
+%define git 20140415
+%define rel 3
+
+%if %{git}
+%define srcname %{name}-%{version}-%{git}.tar.xz
+%define release 10.%{git}.%{rel}
+%else
+%define srcname %{name}-%{version}.tar.xz
+%define release %{rel}
+%endif
 
 Summary: 	%Summary
 Name: 		planner
 Version:	0.14.6
-Release:	2
+Release:	%{release}
 License: 	GPLv2+
 Group: 		Office
 Url:		http://live.gnome.org/Planner
-Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{name}-%{version}.tar.xz
+Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{srcname}
 Patch1:		planner-0.14.6-format-strings.patch
-Patch4:		planner-0.14.4-linkage.patch
-Patch5:		planner-0.14.6-automake113.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	libglade2.0-devel
-BuildRequires:	libgsf-devel
-BuildRequires:	libgnomeui2-devel
-BuildRequires:	libxslt-devel >= 1.1.23
+BuildRequires:	pkgconfig(libglade-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(libgnomecanvas-2.0)
+BuildRequires:  pkgconfig(gconf-2.0)
+
+BuildRequires:	pkgconfig(libxslt)
 %if %{build_gda}
-BuildRequires:	gda2.0-devel > 3.0.0
+BuildRequires:	pkgconfig(libgda-3.0)
 %endif
 BuildRequires:	rarian
+BuildRequires: gnome-common
 Buildrequires:	python-devel
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:  desktop-file-utils
-BuildRequires:	gnome-common
 Requires:	rarian
 Obsoletes:	mrproject
 Provides:	mrproject = %{version}-%{release}
@@ -104,11 +117,11 @@ Evolution support for Planner, this plugin can be used with evolution.
 %prep
 %setup -q
 %patch1 -p1 -b .format-strings
-%patch4 -p0 -b .link
-%patch5 -p1 -b .automake113
+touch xmldocs.make
 
 %build
 NOCONFIGURE=yes gnome-autogen.sh
+export CFLAGS=-Wno-error
 %configure2_5x --enable-gtk-doc --enable-python --enable-python-plugin \
 %if %build_evolution
 --enable-eds --enable-eds-backend \
@@ -127,11 +140,6 @@ sed -i 's/^CFLAGS =/& -fno-strict-aliasing/' python/Makefile.in
 rm -fr %{buildroot}
 
 %makeinstall_std
-
-sed -i -e 's/^\(Icon=.*\).png$/\1/g' %{buildroot}%{_datadir}/applications/planner.desktop 
-
-#duplicate comments to GenericName for KDE (Mdv bug #33406)
-sed -i -e 's/^Comment\(.*\)$/GenericName\1\nComment\1/g' %{buildroot}%{_datadir}/applications/planner.desktop 
 
 desktop-file-install --vendor="" \
   --add-category="GTK" \
@@ -190,9 +198,9 @@ rm -fr %buildroot
 %{_datadir}/planner/stylesheets
 %dir %{_datadir}/planner/images/
 %{_datadir}/planner/images/*
-%{_datadir}/pixmaps/*
 %{_datadir}/mime/packages/*
 %{_datadir}/icons/hicolor/48x48/mimetypes/*
+%{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man1/planner.*
 
 %files -n %{lib_name}
