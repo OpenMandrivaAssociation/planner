@@ -1,7 +1,8 @@
-%define lib_api 1
-%define lib_major 0
-%define lib_name %mklibname planner %{lib_api} %{lib_major}
-%define develname %mklibname -d planner
+%define api 1
+%define major 0
+%define libname %mklibname planner %{api} %{major}
+%define devname %mklibname -d planner
+
 %define build_gda 1
 #gw planner 0.14.4 does not build with evo 2.31.6
 %define build_evolution 0
@@ -30,7 +31,6 @@ Group: 		Office
 Url:		http://live.gnome.org/Planner
 Source0: 	ftp://ftp.gnome.org/pub/GNOME/sources/planner/%{srcname}
 Patch1:		planner-0.14.6-format-strings.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	pkgconfig(libglade-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -51,7 +51,6 @@ BuildRequires:  desktop-file-utils
 Requires:	rarian
 Obsoletes:	mrproject
 Provides:	mrproject = %{version}-%{release}
-
 Requires(post): desktop-file-utils shared-mime-info scrollkeeper
 Requires(postun): desktop-file-utils shared-mime-info scrollkeeper
 
@@ -67,23 +66,20 @@ Group:		Development/GNOME and GTK+
 %description	python
 Python binding for Planner library
 
-%package -n	%{lib_name}
+%package -n	%{libname}
 Summary:	%{Summary}
 Group:		System/Libraries
-Obsoletes:	%mklibname planner- 1 0
 
-%description -n	%{lib_name}
+%description -n	%{libname}
 A support library for accessing Planner data.
  
-%package -n	%{develname}
+%package -n	%{devname}
 Summary:	The files needed for Planner application development
 Group:		Development/C
-Requires:	%{lib_name} = %{version}-%{release}
-Provides:	lib%{name}-1-devel = %version
-Provides:	%name-devel = %version
-Obsoletes:	%mklibname -d planner- 1 0
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n	%{develname}
+%description -n	%{devname}
 This package contains the necessary include files
 for developing applications that access Planner data.
 
@@ -124,12 +120,14 @@ NOCONFIGURE=yes gnome-autogen.sh
 export CFLAGS=-Wno-error
 %configure2_5x --enable-gtk-doc --enable-python --enable-python-plugin \
 %if %build_evolution
---enable-eds --enable-eds-backend \
+	--enable-eds \
+	--enable-eds-backend \
 %endif
---disable-update-mimedb --disable-schemas-install \
-	%if %{build_gda}
-		--with-database
-	%endif
+	--disable-update-mimedb \
+	--disable-schemas-install \
+%if %{build_gda}
+	--with-database
+%endif
 
 # FIXME: pygtk-codegen-2.0 creates code, which breaks strict aliasing
 sed -i 's/^CFLAGS =/& -fno-strict-aliasing/' python/Makefile.in
@@ -137,37 +135,31 @@ sed -i 's/^CFLAGS =/& -fno-strict-aliasing/' python/Makefile.in
 %make
 
 %install
-rm -fr %{buildroot}
-
 %makeinstall_std
 
 desktop-file-install --vendor="" \
-  --add-category="GTK" \
-  --add-category="GNOME" \
-  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
-
+	--add-category="GTK" \
+	--add-category="GNOME" \
+	--dir %{buildroot}%{_datadir}/applications \
+	%{buildroot}%{_datadir}/applications/*
 
 %find_lang %{name} --with-gnome
 
 # remove unpackaged files
-rm -rf %{buildroot}%{_libdir}/planner/views/*.la \
-   %{buildroot}%{_libdir}/planner/plugins/*.la \
-   %{buildroot}%{_libdir}/planner/file-modules/*.la \
-   %{buildroot}%{_libdir}/planner/storage-modules/*.la \
-   %{buildroot}%{_libdir}/planner/*.la \
-   %{buildroot}%{_libdir}/evolution-data-server-1.2/extensions/*.la \
-   %{buildroot}%{_libdir}/evolution/2.4/plugins/*.la \
-   %{buildroot}%{_datadir}/doc/planner \
-   %{buildroot}%{_datadir}/mime/{globs,XMLnamespaces,application,magic,aliases,subclasses}
+#rm -rf %{buildroot}%{_libdir}/planner/views/*.la \
+#   %{buildroot}%{_libdir}/planner/plugins/*.la \
+#   %{buildroot}%{_libdir}/planner/file-modules/*.la \
+#   %{buildroot}%{_libdir}/planner/storage-modules/*.la \
+#   %{buildroot}%{_libdir}/planner/*.la \
+#   %{buildroot}%{_libdir}/evolution-data-server-1.2/extensions/*.la \
+#   %{buildroot}%{_libdir}/evolution/2.4/plugins/*.la \
+#   %{buildroot}%{_datadir}/doc/planner \
+#   %{buildroot}%{_datadir}/mime/{globs,XMLnamespaces,application,magic,aliases,subclasses}
 
 %preun
 %preun_uninstall_gconf_schemas planner
 
-%clean
-rm -fr %buildroot
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc NEWS README examples/sample-1.planner
 %{_sysconfdir}/gconf/schemas/planner.schemas
 %{_bindir}/%{name}
@@ -199,29 +191,25 @@ rm -fr %buildroot
 %dir %{_datadir}/planner/images/
 %{_datadir}/planner/images/*
 %{_datadir}/mime/packages/*
-%{_datadir}/icons/hicolor/48x48/mimetypes/*
-%{_datadir}/icons/hicolor/*/apps/*
+%{_iconsdir}/hicolor/48x48/mimetypes/*
+%{_iconsdir}/hicolor/*/apps/*
 %{_mandir}/man1/planner.*
 
-%files -n %{lib_name}
-%defattr(-,root,root)
-%{_libdir}/*.so.*
+%files -n %{libname}
+%{_libdir}/libplanner-%{api}.so.%{major}*
 
-%files -n %{develname}
-%defattr(-,root,root)
+%files -n %{devname}
 %doc %{_datadir}/gtk-doc/html/libplanner
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 
 %files python
-%defattr(-,root,root)
 %{py_platsitedir}/*
 %{_libdir}/planner/plugins/libpython-plugin.so
 
 %if %{build_gda}
 %files database
-%defattr(-,root,root)
 %doc docs/sql/README.sql
 %{_libdir}/planner/storage-modules/libstorage-sql.so
 %{_libdir}/planner/plugins/libsql-plugin.so
@@ -232,8 +220,8 @@ rm -fr %buildroot
 
 %if %build_evolution
 %files evolution
-%defattr(-,root,root)
 %{_libdir}/evolution-data-server-1.2/extensions/*
 %{_libdir}/evolution/*/plugins/*
 %{_libdir}/planner/plugins/libeds-plugin.so
 %endif
+
