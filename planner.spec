@@ -12,7 +12,7 @@
 %define debug_package %{nil}
 
 %define git 20140415
-%define rel 3
+%define rel 4
 
 %if %{git}
 %define srcname %{name}-%{version}-%{git}.tar.xz
@@ -42,8 +42,8 @@ BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(libgda-3.0)
 %endif
 BuildRequires:	rarian
-BuildRequires: gnome-common
-Buildrequires:	python-devel
+BuildRequires:	gnome-common
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
@@ -118,7 +118,9 @@ touch xmldocs.make
 %build
 NOCONFIGURE=yes gnome-autogen.sh
 export CFLAGS=-Wno-error
-%configure2_5x --enable-gtk-doc --enable-python --enable-python-plugin \
+export PYTHON=%{__python2}
+
+%configure --enable-gtk-doc --enable-python --enable-python-plugin \
 %if %build_evolution
 	--enable-eds \
 	--enable-eds-backend \
@@ -205,7 +207,7 @@ desktop-file-install --vendor="" \
 %{_libdir}/pkgconfig/*
 
 %files python
-%{py_platsitedir}/*
+%{py2_platsitedir}/*
 %{_libdir}/planner/plugins/libpython-plugin.so
 
 %if %{build_gda}
