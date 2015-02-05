@@ -3,7 +3,7 @@
 %define libname %mklibname planner %{api} %{major}
 %define devname %mklibname -d planner
 
-%define build_gda 1
+%define build_gda 0
 #gw planner 0.14.4 does not build with evo 2.31.6
 %define build_evolution 0
 %define title Planner
@@ -157,6 +157,10 @@ desktop-file-install --vendor="" \
 #   %{buildroot}%{_datadir}/doc/planner \
 #   %{buildroot}%{_datadir}/mime/{globs,XMLnamespaces,application,magic,aliases,subclasses}
 
+%if !%build_gda
+rm -rf %{buildroot}%{_datadir}/planner/sql %{buildroot}%{_datadir}/planner/glade/sql.glade %{buildroot}%{_datadir}/planner/ui/sql-plugin.ui
+%endif
+
 %preun
 %preun_uninstall_gconf_schemas planner
 
@@ -171,6 +175,7 @@ desktop-file-install --vendor="" \
 %{_libdir}/planner/plugins/libhtml-plugin.so
 %{_libdir}/planner/plugins/libxmlplanner-plugin.so
 %{_libdir}/planner/plugins/libmsp-plugin.so
+%dir %{_libdir}/planner/storage-modules
 %{_libdir}/planner/storage-modules/libstorage-mrproject-1.so
 %{_datadir}/applications/*
 %dir %{_datadir}/planner
