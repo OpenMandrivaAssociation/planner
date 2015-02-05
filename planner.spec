@@ -11,8 +11,8 @@
 %define Summary Planner is a project management application for GNOME
 %define debug_package %{nil}
 
-%define git 20140415
-%define rel 4
+%define git 20141226
+%define rel 1
 
 %if %{git}
 %define srcname %{name}-%{version}-%{git}.tar.xz
@@ -118,8 +118,6 @@ touch xmldocs.make
 %build
 NOCONFIGURE=yes gnome-autogen.sh
 export CFLAGS=-Wno-error
-export PYTHON=%{__python2}
-
 %configure --enable-gtk-doc --enable-python --enable-python-plugin \
 %if %build_evolution
 	--enable-eds \
@@ -128,8 +126,9 @@ export PYTHON=%{__python2}
 	--disable-update-mimedb \
 	--disable-schemas-install \
 %if %{build_gda}
-	--with-database
+	--with-database \
 %endif
+        PYTHON=%__python2
 
 # FIXME: pygtk-codegen-2.0 creates code, which breaks strict aliasing
 sed -i 's/^CFLAGS =/& -fno-strict-aliasing/' python/Makefile.in
