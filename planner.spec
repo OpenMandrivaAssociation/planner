@@ -154,7 +154,6 @@ Evolution support for Planner, this plugin can be used with evolution.
 %{py2_platsitedir}/*
 %{_libdir}/planner/plugins/libpython-plugin.so
 
-%if %{build_gda}
 %files database
 %doc docs/sql/README.sql
 %{_libdir}/planner/storage-modules/libstorage-sql.so
@@ -162,7 +161,6 @@ Evolution support for Planner, this plugin can be used with evolution.
 %{_datadir}/planner/glade/sql.glade
 %{_datadir}/planner/ui/sql-plugin.ui
 %{_datadir}/planner/sql
-%endif
 
 %if %build_evolution
 %files evolution
