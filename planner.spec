@@ -65,7 +65,6 @@ Provides:	%{name}-devel = %{version}-%{release}
 This package contains the necessary include files
 for developing applications that access Planner data.
 
-%if %{build_gda}
 
 %package	database
 Summary:        Planner database support
@@ -76,7 +75,7 @@ Requires:       %{name} = %{version}-%{release}
 Database support for Planner, this plugin can be used to store projects
 in a PostgreSQL database.
 
-%endif
+
 
 %if %build_evolution
 %package        evolution
