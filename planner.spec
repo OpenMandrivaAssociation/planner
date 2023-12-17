@@ -1,3 +1,5 @@
+%global build_ldflags %{build_ldflags} -Wl,--undefined-version
+
 %define api 1
 %define major 0
 %define libname %mklibname planner %{api} %{major}
