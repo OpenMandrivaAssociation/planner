@@ -12,11 +12,11 @@
 
 Summary: 	%Summary
 Name: 		planner
-Version:	0.14.91
+Version:	0.14.92
 Release:	1
 License: 	GPLv2+
 Group: 		Office
-Url:		http://live.gnome.org/Planner
+Url:		https://live.gnome.org/Planner
 Source0: 	https://download.gnome.org/sources/planner/0.14/planner-%{version}.tar.xz
 
 BuildRequires:	meson
@@ -94,7 +94,6 @@ Evolution support for Planner, this plugin can be used with evolution.
 
 %prep
 %setup -q
-
 
 %build
 %meson
