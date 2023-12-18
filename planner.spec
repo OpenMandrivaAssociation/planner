@@ -26,8 +26,10 @@ BuildRequires:	meson
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires: pkgconfig(gconf-2.0)
-BuildRequires:	pkgconfig(libxslt)
-BuildRequires:	pkgconfig(libgda-5.0)
+BuildRequires: pkgconfig(libxslt)
+BuildRequires: pkgconfig(libxml-2.0)
+BuildRequires: pkgconfig(libexslt)
+BuildRequires: pkgconfig(libgda-5.0)
 BuildRequires: pkgconfig(gail-3.0)
 BuildRequires:	rarian
 BuildRequires:	gnome-common
