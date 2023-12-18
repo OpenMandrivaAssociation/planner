@@ -102,7 +102,7 @@ Evolution support for Planner, this plugin can be used with evolution.
 %setup -q
 
 %build
-%meson
+%meson -Ddatabase-gda=diabled
 %meson_build
 
 %install
