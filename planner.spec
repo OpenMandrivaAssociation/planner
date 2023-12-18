@@ -23,7 +23,7 @@ Group: 		Office
 Url:		https://live.gnome.org/Planner
 Source0: 	https://download.gnome.org/sources/planner/0.14/planner-%{version}.tar.xz
 
-BuildRequires:	meson
+BuildRequires: meson
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires: pkgconfig(gconf-2.0)
@@ -102,7 +102,7 @@ Evolution support for Planner, this plugin can be used with evolution.
 %setup -q
 
 %build
-%meson -Ddatabase-gda=diabled
+%meson -Ddatabase-gda=disabled
 %meson_build
 
 %install
