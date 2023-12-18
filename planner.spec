@@ -1,5 +1,6 @@
 %global build_ldflags %{build_ldflags} -Wl,--undefined-version
 %define _disable_ld_no_undefined 1
+%define _disable_lto 1
  
 %define api 1
 %define major 0
